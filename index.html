@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Alumni Dashboard | FK UB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+        <div class="sidebar-top">
+          <div>
+            <p class="eyebrow">Dashboard interaktif</p>
+            <h1>Smart Alumni Ecosystem</h1>
+          </div>
+          <button class="icon-button sidebar-close" id="closeSidebar" type="button" aria-label="Tutup sidebar">×</button>
+        </div>
+
+        <p class="sidebar-copy">Pilih halaman terpisah seperti dashboard referensi. Search akan memfilter isi halaman dan bisa lompat ke bagian yang paling relevan.</p>
+
+        <label class="search-panel" for="searchInput">
+          <span>Cari kata kunci</span>
+          <input id="searchInput" type="search" placeholder="Coba: AI, roadmap, portal, akreditasi" autocomplete="off" />
+          <small id="searchMeta">Tekan Enter untuk lompat ke halaman paling relevan.</small>
+        </label>
+
+        <nav class="sidebar-nav" id="sidebarNav">
+          <a href="#overview" data-route="overview">Ringkasan</a>
+          <a href="#visual" data-route="visual">Visual</a>
+          <a href="#roadmap" data-route="roadmap">Roadmap</a>
+          <a href="#investment" data-route="investment">Investasi</a>
+          <a href="#alignment" data-route="alignment">Alignment</a>
+          <a href="#governance" data-route="governance">Governance</a>
+          <a href="#quickwins" data-route="quickwins">Quick wins</a>
+          <a href="#insight" data-route="insight">Insight</a>
+        </nav>
+
+        <div class="sidebar-note card soft">
+          <div class="panel-label">Mode interaktif</div>
+          <p>Ketik kata kunci lalu tekan Enter untuk pindah ke halaman yang paling cocok. Kartu, diagram, dan ringkasan akan ikut menyesuaikan.</p>
+        </div>
+      </aside>
+
+      <div class="backdrop" id="backdrop" hidden></div>
+
+      <main class="main">
+        <header class="topbar card">
+          <button class="icon-button sidebar-open" id="openSidebar" type="button" aria-label="Buka sidebar">☰</button>
+          <div class="topbar-copy">
+            <p class="eyebrow" id="pageKicker">Dashboard interaktif</p>
+            <h2 id="pageTitle">Ringkasan eksekutif</h2>
+            <p id="pageSubtitle">Pilih halaman dari sidebar atau cari kata kunci.</p>
+          </div>
+          <div class="topbar-meta">
+            <span id="resultCount" class="section-chip">0 hasil</span>
+            <button class="icon-button clear-button" id="clearSearch" type="button" aria-label="Hapus filter" title="Hapus filter">↺</button>
+          </div>
+        </header>
+
+        <div class="content-stack">
+          <section class="page-panel card is-active" data-page="overview">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Overview</p>
+                <h2>Smart Alumni Ecosystem Dashboard</h2>
+                <p class="lede compact">Dashboard eksekutif untuk alumni, tracer study, dan pengembangan karir Fakultas Kedokteran Universitas Brawijaya 2026–2030. Dipisah per halaman supaya tidak terlalu padat dalam satu layar.</p>
+              </div>
+              <div class="section-chip">2026 → 2030</div>
+            </div>
+            <div class="hero-badges" id="heroBadges"></div>
+            <div class="hero-panel card soft">
+              <div class="panel-label">Fokus utama</div>
+              <ul class="focus-list" id="focusList"></ul>
+            </div>
+            <section class="metrics-grid" id="metricsGrid" aria-label="Key metrics"></section>
+          </section>
+
+          <section class="page-panel card" data-page="visual">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Visual ringkas</p>
+                <h2>Donut chart dan diagram alur</h2>
+              </div>
+              <div class="section-chip">Filter-aware</div>
+            </div>
+            <div class="visual-grid">
+              <div class="donut-card">
+                <div class="donut-wrap">
+                  <div class="donut-chart" id="priorityDonut">
+                    <div class="donut-center">
+                      <strong>77%</strong>
+                      <span>High Priority</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="legend" id="donutLegend"></div>
+              </div>
+              <div class="flow-card">
+                <div class="flow-diagram" id="flowDiagram"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="page-panel card" data-page="roadmap">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Roadmap implementasi</p>
+                <h2>Milestone transformasi digital</h2>
+              </div>
+              <div class="section-chip">2026 → 2030</div>
+            </div>
+            <div id="roadmap" class="timeline"></div>
+          </section>
+
+          <section class="page-panel card" data-page="investment">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Portofolio investasi</p>
+                <h2>Anggaran utama dan prioritas</h2>
+              </div>
+              <div class="section-chip">Capex-based view</div>
+            </div>
+            <div class="chart-wrap">
+              <div id="investmentChart" class="bar-chart" aria-label="Chart investasi"></div>
+            </div>
+            <div class="mini-summary" id="miniSummary"></div>
+          </section>
+
+          <section class="page-panel card" data-page="alignment">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Strategic alignment</p>
+                <h2>Tujuan bisnis dan enabler SI/TI</h2>
+              </div>
+              <div class="section-chip">Ward & Peppard</div>
+            </div>
+            <div id="alignmentGrid" class="alignment-grid"></div>
+          </section>
+
+          <section class="page-panel card" data-page="governance">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Governance</p>
+                <h2>Peran, kontrol, dan keamanan data</h2>
+              </div>
+              <div class="section-chip">UU PDP ready</div>
+            </div>
+            <div id="governanceCards" class="governance-grid"></div>
+          </section>
+
+          <section class="page-panel card" data-page="quickwins">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Quick wins</p>
+                <h2>Aksi cepat yang langsung terasa</h2>
+              </div>
+              <div class="section-chip">Adopsi awal</div>
+            </div>
+            <div id="quickWins" class="quickwin-grid"></div>
+          </section>
+
+          <section class="page-panel card" data-page="insight">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Insight eksekutif</p>
+                <h2>Kenapa dashboard ini relevan</h2>
+              </div>
+              <div class="section-chip">Data-driven decision making</div>
+            </div>
+            <div class="insight-copy" id="insightCopy"></div>
+          </section>
+        </div>
+
+        <footer class="footer">
+          <span>Sumber isi: Tugas Akhir Perencanaan Strategi SI Alumni, Tracer Study, dan Pengembangan Karir FK UB 2026–2030</span>
+          <span>Dashboard mandiri HTML/CSS/JS</span>
+        </footer>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
